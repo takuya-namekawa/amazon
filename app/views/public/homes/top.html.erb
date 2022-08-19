@@ -1,3 +1,11 @@
 <h1>Public::Homes#top</h1>
 <p>Find me in app/views/public/homes/top.html.erb</p>
-<%= link_to "about" , public_homes_about_path %>
+<%= link_to "about" , public_homes_about_path %><br>
+<%= link_to "会員マイページ" , public_show_path %><br>
+
+
+
+<%= link_to "新規会員登録" ,  cancel_customer_registration_path %><br>
+<%= link_to "会員ログイン" ,  new_customer_session_path %><br>
+
+<%= link_to "ログアウト" ,  destroy_customer_session_path , method: :delete%><br>

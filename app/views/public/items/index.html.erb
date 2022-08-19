@@ -1,0 +1,7 @@
+ <% @items.each do |item| %>
+ <%= link_to public_item_path(item.id) do %>
+ <%= image_tag item.get_image(100,100)%>
+ <% end %>
+ <%= item.name %>
+ <%= item.price %>
+ <% end %>
