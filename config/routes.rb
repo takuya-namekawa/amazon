@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
   namespace :public do
     get 'cart_items/index'
   end
@@ -26,6 +28,11 @@ Rails.application.routes.draw do
    resources :items, only: [:index, :show]
    delete 'cart_items/all_destroy' => 'cart_items#all_destroy', as: 'all_destroy'
    resources :cart_items, only: [:index, :update, :destroy, :create]
+   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+   resources :orders, only: [:new, :create, :index, :show]
+   post 'orders/confirm' => 'orders#confirm', as: 'confirm'
+   get 'orders/thanks' => 'orders#thanks', as: 'thanks'
+   resources :order_items, only: [:update]
 
   end
 

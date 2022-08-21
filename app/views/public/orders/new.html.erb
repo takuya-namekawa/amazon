@@ -1,0 +1,19 @@
+<div class="container">
+  <h4 class="m-4"><span style="background-color:#dddddd">注文情報入力</span></h4>
+</div>
+
+ <%= form_with model: @order, url:  public_confirm_path do |f| %>
+ <%= f.radio_button :address, "1" %>
+ <%= f.label :address, 'ご自身の住所', value: 1 %>
+<br>
+ <%= current_customer.address %>
+ <br>
+ <%= f.radio_button :address, "2" %>
+ <%= f.label :shipping_address, '登録済み住所から選択', value: 2 %>
+ <br>
+ <%= f.collection_select :customer_id, current_customer.addresses.all, :id, :shipping_address %>
+<br>
+ <%= f.submit "確認画面へ進む" %>
+
+ <%#= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "-- 選択してください --", class: 'form-control'%>
+<% end %>

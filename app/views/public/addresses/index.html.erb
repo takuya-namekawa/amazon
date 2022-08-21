@@ -1,0 +1,20 @@
+<%= form_with model: @address, url:  public_addresses_path do |f| %>
+
+<%= f.label :郵便番号 %>
+<%= f.text_field :post_code %>
+
+<%= f.label :住所 %>
+<%= f.text_field :shipping_address %>
+
+<%= f.label :宛名 %>
+<%= f.text_field :name %>
+
+<%= f.submit " 新規登録 " %>
+<% end %>
+
+<% @addresses.each do |address| %>
+<%= address.name %>
+<%= address.shipping_address %>
+<%= address.post_code %>
+<%= link_to "編集する" ,edit_public_address_path(address) %>
+<% end %>
