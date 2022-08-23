@@ -11,7 +11,8 @@
           In_production: "製作中"
           Preparing_to_ship: "発送準備中"
           sent: "発送済み"
-          
+
+      order_item:
         crafting_status:
           production_not_allowed: "制作不可"
           waiting_for_production: "制作待ち"

@@ -8,7 +8,7 @@
 <P>支払方法</P>
 <%= Order.payment_methods_i18n[@order.payment_method] %><br>
 <P>注文ステータス</P>
-<%= form_with  model: @order, url: admin_order_path, local: true, class: "form-row" do |f| %>
+<%= form_with  model: @order, url: admin_order_path(@order), local: true, class: "form-row" do |f| %>
     <%= f.select :status, Order.statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm col-6"  %>
     <%= f.submit "更新" %>
 <% end %>
@@ -20,7 +20,10 @@
 
 <%= (order_item.item.add_tax_sales_price*order_item.order_quantity).to_s(:delimited) %><br>
 <% @total+=order_item.item.add_tax_sales_price*order_item.order_quantity %>
-
+<%= form_with  model: order_item, url: admin_order_item_path(order_item.id), local: true, class: "form-row" do |f| %>
+    <%= f.select :crafting_status, OrderItem.crafting_statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm col-6"  %>
+    <%= f.submit "更新" %>
+<% end %>
 <% end %>
 
 
