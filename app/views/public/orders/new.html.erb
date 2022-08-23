@@ -3,16 +3,23 @@
 </div>
 
  <%= form_with model: @order, url:  public_confirm_path do |f| %>
+ <h5>支払方法</h5>
+ <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+ <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+ <br>
+ <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+ <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
+ <h5>お届け先</h5>
  <%= f.radio_button :address, "1" %>
  <%= f.label :address, 'ご自身の住所', value: 1 %>
-<br>
+ <br>
  <%= current_customer.address %>
  <br>
  <%= f.radio_button :address, "2" %>
  <%= f.label :shipping_address, '登録済み住所から選択', value: 2 %>
  <br>
- <%= f.collection_select :customer_id, current_customer.addresses.all, :id, :shipping_address %>
-<br>
+ <%= f.collection_select :address_id, current_customer.addresses.all, :id, :shipping_address %>
+ <br>
  <%= f.submit "確認画面へ進む" %>
 
  <%#= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "-- 選択してください --", class: 'form-control'%>

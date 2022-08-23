@@ -1,0 +1,14 @@
+<div class="container">
+  <h4 class="m-4"><span style="background-color:#dddddd">注文情報一覧</span></h4>
+</div>
+
+<%  @orders.each do |order| %>
+    <%= order.created_at.strftime('%Y/%m/%d') %>
+    <%= order.post_code %>
+    <%= order.address %>
+    <%= order.name %>
+    <%= order.total_payment %>
+      <% order.order_items.each do |order_item| %>
+      <%= order_item.item.name %><br>
+      <% end %>
+<% end %>

@@ -1,0 +1,12 @@
+<%  @orders.each do |order| %>
+  <%= link_to admin_order_path(order) do %>
+    <%= order.created_at.strftime('%Y/%m/%d') %>
+  <% end %>
+  <%= order.name %>
+
+
+    <%= order.order_items.sum(:order_quantity) %>
+
+
+
+<% end %>

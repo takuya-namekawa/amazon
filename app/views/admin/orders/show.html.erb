@@ -1,0 +1,33 @@
+<div class="container">
+<P>購入者</P>
+<%= @order.name %><br>
+<P>注文日</P>
+<%= @order.created_at.strftime('%Y/%m/%d') %><br>
+<P>配送先</P>
+<%= @order.address %><br>
+<P>支払方法</P>
+<%= Order.payment_methods_i18n[@order.payment_method] %><br>
+<P>注文ステータス</P>
+<%= form_with  model: @order, url: admin_order_path, local: true, class: "form-row" do |f| %>
+    <%= f.select :status, Order.statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm col-6"  %>
+    <%= f.submit "更新" %>
+<% end %>
+<br>
+<% @order.order_items.each do |order_item| %>
+<%= order_item.item.name %><br>
+<%= order_item.item.add_tax_sales_price.to_s(:delimited) %><br>
+<%= order_item.order_quantity%><br>
+
+<%= (order_item.item.add_tax_sales_price*order_item.order_quantity).to_s(:delimited) %><br>
+<% @total+=order_item.item.add_tax_sales_price*order_item.order_quantity %>
+
+<% end %>
+
+
+<P>商品合計</P>
+<%= @total.to_s(:delimited) %>
+<P>送料</P>
+<%= @order.shipping_cost %>
+<P>請求金額合計</P>
+<%= (@total+@order.shipping_cost).to_s(:delimited) %>
+</div>

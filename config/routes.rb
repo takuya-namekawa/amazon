@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-
-  namespace :public do
-    get 'cart_items/index'
-  end
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
@@ -29,9 +25,9 @@ Rails.application.routes.draw do
    delete 'cart_items/all_destroy' => 'cart_items#all_destroy', as: 'all_destroy'
    resources :cart_items, only: [:index, :update, :destroy, :create]
    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-   resources :orders, only: [:new, :create, :index, :show]
    post 'orders/confirm' => 'orders#confirm', as: 'confirm'
    get 'orders/thanks' => 'orders#thanks', as: 'thanks'
+   resources :orders, only: [:new, :create, :index, :show]
    resources :order_items, only: [:update]
 
   end
@@ -40,6 +36,7 @@ Rails.application.routes.draw do
   namespace :admin do
    resources :items, except: :destroy
    resources :genres, only: [:index, :create, :edit, :update]
+   resources :orders, only: [:index, :show, :update]
   end
 
 
