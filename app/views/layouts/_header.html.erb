@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand navbar-dark navbar-fixed-top shadow-sm", style="background-color: #fcfcfc;">
+  <div class="container ">
+
+    <div class="navbar-header">
+      <%= link_to root_path, class: "navbar-brand" do %>
+      <img src="/assets/logo.gif" width="150" height="60" class="d-inline-block align-top" alt="">
+      <% end %>
+    </div>
+
+
+ <% if customer_signed_in? %>
+
+
+
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <%= link_to "マイページ", public_items_path, class: 'btn btn-dark  rounded-pill  mr-2 shadow-sm' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "商品一覧", public_items_path, class: 'btn btn-dark rounded-pill  mr-2 shadow-sm' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "カート", public_items_path, class: 'btn btn-dark rounded-pill  mr-2 shadow-sm' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "ログアウト",  destroy_customer_session_path, method: :delete, class: 'btn btn-dark rounded-pill  mr-2 shadow-sm' %>
+        </li>
+      </ul>
+
+    <% else %>
+
+
+
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to "会員登録", public_items_path, class: 'btn btn-dark rounded-pill  mr-2 shadow-sm' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "ログイン",public_items_path, class: 'btn btn-dark rounded-pill  mr-2 shadow-sm' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "商品一覧",public_items_path, class: 'btn btn-dark rounded-pill  mr-2 shadow-sm'%>
+        </li>
+        <li class="nav-item">
+          <%= link_to "店舗情報", "#", class: 'btn btn-dark rounded-pill  mr-2 shadow-sm' %>
+        </li>
+      </ul>
+
+    <% end %>
+
+    </div>
+  </nav>

@@ -1,7 +1,29 @@
- <% @items.each do |item| %>
- <%= link_to public_item_path(item.id) do %>
- <%= image_tag item.get_image(100,100)%>
- <% end %>
- <%= item.name %>
- <%= item.price %>
- <% end %>
+<div class="container mb-3 pt-3">
+  <div class="row">
+    <div class="col-12">
+<img src="assets/mv.jpg", style="width: 100%; height: 400px;">
+    </div>
+  </div>
+</div>
+<div class="container-fluid ">
+  <div class="row">
+    <% @items.each do |item| %>
+
+      <div class="col-12 col-md-4 col-lg-3">
+        <div class="card mb-7">
+         <div class="card-img-top d-block overflow-hidden">
+         <div class="text-center position-relative">
+        <%= link_to public_item_path(item.id) do %>
+        <%= image_tag item.get_image(250,250)%>
+        <% end %><br>
+        <%= item.name %><br>
+        <%= item.price %>
+
+        </div>
+        </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+

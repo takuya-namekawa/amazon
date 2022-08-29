@@ -1,11 +1,39 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container  pt-3">
+  <div class="row">
+    <div class="col-12">
+      <img src="assets/top.jpg", style="width: 100%; height: 500px;">
+    </div>
+  </div>
+</div>
+<div class="container mb-3 ">
+  <div class="row">
+    <div class="col-12">
+      <img src="assets/top2.jpg", style="width: 100%; height: 200px;">
+      <div class="d-flex justify-content-center align-items-center card-img-overlay">
+        <div class="col">
+          <h4 class="text-center">「まだ美味しく食べられる食品を繋ぐ」</h4>
+            <p class="text-center">
+              <strong>
+                食べトク は売り手と買い手を繋ぐ食品ロス レスキューサイトです
+              </strong><br>
+                販売期限が近い商品をお得な値段でご予約いただけます<br>
+                早速 会員登録して食品をレスキューしてみましょう
+            </p>
+            <div class="text-center">
+            <%= link_to "無料会員登録", new_customer_registration_path ,class: "btn btn-secondary btn-lg "%><br>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <%= link_to "about" , public_homes_about_path %><br>
 <%= link_to "会員マイページ" , public_show_path %><br>
 
 
 
-<%= link_to "新規会員登録" ,  cancel_customer_registration_path %><br>
+
 <%= link_to "会員ログイン" ,  new_customer_session_path %><br>
 
 <%= link_to "ログアウト" ,  destroy_customer_session_path , method: :delete%><br>
